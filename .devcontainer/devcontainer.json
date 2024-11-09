@@ -1,0 +1,16 @@
+{
+	"name": "aur",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+	"features": {
+		"ghcr.io/devcontainers-extra/features/deno:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mk12.better-git-line-blame",
+				"GitHub.copilot",
+				"denoland.vscode-deno"
+			]
+		}
+	}
+}

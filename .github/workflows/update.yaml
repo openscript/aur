@@ -1,0 +1,27 @@
+name: Check for AUR Updates
+
+on:
+  schedule:
+    # Run every day at midnight
+    - cron: "0 0 * * *"
+  # Manually trigger the workflow
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - name: Run AUR Update Check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: deno run --allow-net --allow-read --allow-env --allow-run check_aur_updates.ts
+
